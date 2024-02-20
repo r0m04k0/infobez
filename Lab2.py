@@ -3,7 +3,7 @@ import random
 users = 4
 objects = 4
 
-user_ids = ["Ivan", "Sergey", "Boris", "Anna"]
+user_ids = ["Admin", "User2", "User3", "User4"]
 
 rights = ["Чтение", "Запись", "Исполнение", "Запрет"]
 
@@ -12,10 +12,11 @@ access_matrix = []
 for i in range(users):
     user_rights = []
     for j in range(objects):
-        if user_ids[i] == "Ivan":
+        if user_ids[i] == "Admin":
             user_rights.append("Полные права")
         else:
-            user_rights.append(random.choice(rights))
+            user_rights.append(random.choice
+            (rights))
     access_matrix.append(user_rights)
 
 def check_access(user, object, action):
@@ -45,7 +46,7 @@ def show_rights(user):
     print("Перечень Ваших прав:")
     for i in range(1, objects + 1):
         print(f"Объект{i}: {access_matrix[user_index][i - 1]}")
-    print("Жду ваших указаний >")
+    print("Введите команду (read/write/execute) >>")
 
 def handle_command(user):
     command = input()
