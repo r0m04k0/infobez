@@ -1,13 +1,21 @@
 from random import choice 
+import math
 
 alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'"
 
-length = 8
 
-def generate():
+def generate(length):
     password = ""
     for i in range(length):
         password += choice(alphabet)
     return password
 
-print(generate())
+P = 10**(-6)
+V = 20
+T = 3 * 7 * 24 * 60
+
+S = V * T / P
+length = math.ceil(math.log(S, len(alphabet)))
+print(length)
+
+print(generate(length))
