@@ -45,7 +45,7 @@ private_key = rsa.generate_private_key(
 	key_size=2048
 )
 
-with open('private_key.pem', 'wb') as f:
+with open('./rsa/private_key.pem', 'wb') as f:
 	pem = private_key.private_bytes(
 		encoding=serialization.Encoding.PEM,
 		format=serialization.PrivateFormat.TraditionalOpenSSL,
@@ -55,15 +55,15 @@ with open('private_key.pem', 'wb') as f:
 
 public_key = private_key.public_key()
 
-with open('public_key.pem', 'wb') as f:
+with open('./rsa/public_key.pem', 'wb') as f:
 	pem = public_key.public_bytes(
 		encoding=serialization.Encoding.PEM,
 		format=serialization.PublicFormat.SubjectPublicKeyInfo
 	)
 	f.write(pem)
 
-encrypt_file(public_key, 'input.txt', 'encrypted.txt')
-decrypt_file(private_key, 'encrypted.txt', 'decrypted.txt')
+encrypt_file(public_key, './rsa/input.txt', './rsa/encrypted.txt')
+decrypt_file(private_key, './rsa/encrypted.txt', './rsa/decrypted.txt')
 
 # 1. Разработать консольное приложение для шифрования/дешифрования 
 # произвольных файлов с помощью алгоритма RSA.
